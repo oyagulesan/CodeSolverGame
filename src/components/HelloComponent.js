@@ -16,6 +16,7 @@ const HelloComponent = (props) => {
 
     function startGame() {
         setGameOn(true);
+        setNumberLocal();
     }
 
     return !gameOn.val ? <div>
