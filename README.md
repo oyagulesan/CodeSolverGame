@@ -1,3 +1,7 @@
+# Game Published at
+
+[Click](http://oyas_code_solver_game.surge.sh/) to run game on browser.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
