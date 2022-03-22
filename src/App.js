@@ -5,11 +5,9 @@ import HelloComponent from './components/HelloComponent';
 function App() {
   return (
     <AppProvider>
-      <div className="App">
-        <header className="App-header">
-          <h1>OYA's GAME</h1>
+      <div className="containerStyle">
+          <h1 className="headerStyle">CODE SOLVER GAME</h1>
           <HelloComponent/>
-        </header>
       </div>
     </AppProvider>
   );

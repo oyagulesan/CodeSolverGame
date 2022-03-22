@@ -36,3 +36,105 @@
     transform: rotate(360deg);
   }
 }
+
+.cardStyle {
+  background-color: maroon;
+  border-radius: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.headerStyle {
+  background-color: maroon;
+  border-radius: 20px;
+  padding: 10px;
+}
+
+.buttonStyle {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  height: 80px; 
+  width: 120px;
+  color: maroon; 
+  align-content: 'center';
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 20px;
+  box-shadow: 100px;
+}
+
+.errorStyle {
+  background-color: gray;
+  border-radius: 20px;
+  padding: 10px;
+  color: maroon;
+  font-weight: bold;
+}
+
+.containerStyle {
+  text-align: center;
+  width: 600px;
+  margin: 20px;
+  background-color: #235;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  border-radius: 30px;
+}
+
+.numberStyle {
+  height: 30px;
+  width: 30px;
+  background-color: maroon;
+  color:antiquewhite;
+  border-radius: 50%;
+  font-size: 20px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+  border: 1px solid transparent;
+}
+
+.numberContainer {
+  display: flex;
+  flex-direction: row;
+  background: transparent;
+}
+
+.inputArea {
+  height: 50px;
+  width: 50px;
+  margin: 5px;
+  border-radius: 50%;
+  background-color: rgba(220, 120, 120, 1);
+}
+
+.toBeSelected {
+  height: 50px;
+  width: 50px;
+  margin: 5px;
+  border-radius: 50%;
+  background-color: rgba(220, 120, 120, 1);
+  animation:blinkingText 1.2s infinite;
+}
+@keyframes blinkingText{
+  0%{     background-color: rgba(220, 120, 120, 1); }
+  25%{    background-color: transparent; }
+  50%{    background-color: rgba(220, 120, 120, 1); }
+  75%{    background-color: transparent;  }
+  100%{   background-color: rgba(220, 120, 120, 1);    }
+}
+
+
+.centerStyle {
+  display: flex;
+  justify-content: center;
+  flex: 1;
+  padding: 4px;
+  font-size: 30px;
+  font-weight: bold;
+}

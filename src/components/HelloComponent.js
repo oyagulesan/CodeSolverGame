@@ -20,16 +20,13 @@ const HelloComponent = (props) => {
     }
 
     return !gameOn.val ? <div>
-        <hr></hr>
-        <p>{initialMessage}</p>
-        <hr></hr>
-        <h2>DESCRIPTION</h2>
-        <hr></hr>
-        <p>{description1}</p>
-        <p>{description2}</p>
-        <p>{description3}</p>
-        <p>{description4}</p>
-        <Button style={{marginBottom: 20, height: 40, width: 80, color: 'black', alignContent: 'center'}} onClick={startGame}>Start Game</Button>
+            <div  className="cardStyle">
+                <p>{description1}</p>
+                <p>{description2}</p>
+                <p>{description3}</p>
+                <p>{description4}</p>
+            </div>
+            <Button className="buttonStyle" onClick={startGame}>Start Game</Button>
         </div>
         :
         <GameComponent />
