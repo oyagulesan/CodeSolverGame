@@ -3,6 +3,7 @@ import {Context as AppContext} from '../context/AppContext';
 import Button from 'react-bootstrap/Button'
 import { useDrop } from 'react-dnd'
 import NumberComponent from './NumberComponent';
+import congratsGif from "../assets/images/congrats.gif";
 
 const GameComponent = (props) => {
     const { setGameOn, setGuesses, setIterations, state: {guesses, iterations, gameOn, numberToBeGuessed, initialMessage, description1, description2, description3, description4 }} = useContext(AppContext);
@@ -79,13 +80,11 @@ const GameComponent = (props) => {
         }
     }
     const onClick2 = () => {
-        console.log('....1: ', numArr);
         if (numArr[1] !== null) {
             const tmpArr = numArr;
             tmpArr[1] = null;
             setNumArr(tmpArr);
             setNumber((tmpArr[0] || 0) * 1000 + (tmpArr[1] || 0) * 100 + (tmpArr[2] || 0) * 10 + (tmpArr[3] || 0));
-            console.log('....1 reset... ', numArr);
         }
     }    
     const onClick3 = () => {
@@ -148,7 +147,6 @@ const GameComponent = (props) => {
     function toggleShowNumber() {
         setShowNumber(showNumber ? false : true);
     }
-    console.log('....render...', numArr, number);
 
     return <div>
         <p className="cardStyle">Game Started</p>
@@ -176,11 +174,14 @@ const GameComponent = (props) => {
                     <div className={isOver4 ? "toBeSelected" : "inputArea"} ref={dropRef4} onClick={onClick4}>
                         <div className={"centerStyle"}>{numArr && numArr[3] !== null ? numArr[3] : ''}</div>
                     </div>
-                </div>
+                </div>                
                 <Button className="buttonStyle" onClick={makeGuess}>Guess</Button>
             </div>
             :
-            <p>{'You have found the number in ' + iterations.val + ' iterations'}</p>
+            <div>
+                <img src={congratsGif} alt="wait until the page loads" />
+                <p>{'You have found the number in ' + iterations.val + ' iterations'}</p>
+            </div>
             }
 
             {err && !success ? <p className="errorStyle">{err}</p> : null}
