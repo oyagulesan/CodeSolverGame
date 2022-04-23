@@ -54,7 +54,7 @@ export const { Context, Provider } = createDataContext(
     {    
         initialMessage: 'Hello to the code solver game',
         description1: 'You will need to guess a 4 digits number.',
-        description2: 'Numbers are not repeating and cannot start with 0.',
+        description2: 'Numbers are not repeating and can start with 0.',
         description3: '"+" sign means a digit at its place while "-" ',
         description4: 'means a digit exists in the number but it is not at its exact place.',
         numberToBeGuessed: 1234,   

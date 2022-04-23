@@ -6,13 +6,12 @@ import NumberComponent from './NumberComponent';
 import congratsGif from "../assets/images/congrats.gif";
 
 const GameComponent = (props) => {
-    const { setGameOn, setGuesses, setIterations, state: {guesses, iterations, gameOn, numberToBeGuessed, initialMessage, description1, description2, description3, description4 }} = useContext(AppContext);
+    const { setGameOn, setGuesses, setIterations, state: {guesses, iterations, numberToBeGuessed }} = useContext(AppContext);
     const [showNumber, setShowNumber] = useState(false);
     const [err, setErr] = useState(null);
-    const [number, setNumber] = useState(0);
     const [numArr, setNumArr] = useState([null, null, null, null]);
     const [success, setSuccess] = useState(false);
-    const numberArray = Array.from(Array(10), (_, i) => i);
+    const numberArray = Array.from(Array(10), (_, i) => i + '');
     useEffect(() => {
         setIterations(0);
         setGuesses([]);
@@ -20,12 +19,10 @@ const GameComponent = (props) => {
     const [{ isOver1 }, dropRef1] = useDrop({
         accept: 'number',
         drop: (item) => {
-            if (item.number !== 0) {
-                const tmpArr = [...numArr];            
-                tmpArr[0] = item.number;
-                setNumArr(tmpArr);
-                setNumber((tmpArr[0] || 0) * 1000 + (tmpArr[1] || 0) * 100 + (tmpArr[2] || 0) * 10 + (tmpArr[3] || 0));    
-            }
+            const tmpArr = [...numArr];            
+            tmpArr[0] = item.number;
+            setNumArr(tmpArr);
+            // setNumber((tmpArr[0] || 0) * 1000 + (tmpArr[1] || 0) * 100 + (tmpArr[2] || 0) * 10 + (tmpArr[3] || 0));    
         },
         collect: (monitor) => ({
             isOver1: monitor.isOver()
@@ -38,7 +35,7 @@ const GameComponent = (props) => {
             const tmpArr = [...numArr];            
             tmpArr[1] = item.number;
             setNumArr(tmpArr);
-            setNumber((tmpArr[0] || 0) * 1000 + (tmpArr[1] || 0) * 100 + (tmpArr[2] || 0) * 10 + (tmpArr[3] || 0));
+            // setNumber((tmpArr[0] || 0) * 1000 + (tmpArr[1] || 0) * 100 + (tmpArr[2] || 0) * 10 + (tmpArr[3] || 0));
         },
         collect: (monitor) => ({
             isOver2: monitor.isOver()
@@ -51,7 +48,7 @@ const GameComponent = (props) => {
             const tmpArr = [...numArr];            
             tmpArr[2] = item.number;
             setNumArr(tmpArr);
-            setNumber((tmpArr[0] || 0) * 1000 + (tmpArr[1] || 0) * 100 + (tmpArr[2] || 0) * 10 + (tmpArr[3] || 0));
+            // setNumber((tmpArr[0] || 0) * 1000 + (tmpArr[1] || 0) * 100 + (tmpArr[2] || 0) * 10 + (tmpArr[3] || 0));
         },
         collect: (monitor) => ({
             isOver3: monitor.isOver()
@@ -64,7 +61,7 @@ const GameComponent = (props) => {
             const tmpArr = [...numArr];            
             tmpArr[3] = item.number;
             setNumArr(tmpArr);
-            setNumber((tmpArr[0] || 0) * 1000 + (tmpArr[1] || 0) * 100 + (tmpArr[2] || 0) * 10 + (tmpArr[3] || 0));
+            // setNumber((tmpArr[0] || 0) * 1000 + (tmpArr[1] || 0) * 100 + (tmpArr[2] || 0) * 10 + (tmpArr[3] || 0));
         },
         collect: (monitor) => ({
             isOver4: monitor.isOver()
@@ -73,34 +70,34 @@ const GameComponent = (props) => {
 
     const onClick1 = () => {
         if (numArr[0] !== null) {
-            const tmpArr = numArr;
+            const tmpArr = [...numArr];            
             tmpArr[0] = null;
             setNumArr(tmpArr);            
-            setNumber((tmpArr[0] || 0) * 1000 + (tmpArr[1] || 0) * 100 + (tmpArr[2] || 0) * 10 + (tmpArr[3] || 0));
+            // setNumber((tmpArr[0] || 0) * 1000 + (tmpArr[1] || 0) * 100 + (tmpArr[2] || 0) * 10 + (tmpArr[3] || 0));
         }
     }
     const onClick2 = () => {
         if (numArr[1] !== null) {
-            const tmpArr = numArr;
+            const tmpArr = [...numArr];            
             tmpArr[1] = null;
             setNumArr(tmpArr);
-            setNumber((tmpArr[0] || 0) * 1000 + (tmpArr[1] || 0) * 100 + (tmpArr[2] || 0) * 10 + (tmpArr[3] || 0));
+            // setNumber((tmpArr[0] || 0) * 1000 + (tmpArr[1] || 0) * 100 + (tmpArr[2] || 0) * 10 + (tmpArr[3] || 0));
         }
     }    
     const onClick3 = () => {
         if (numArr[2] !== null) {
-            const tmpArr = numArr;
+            const tmpArr = [...numArr];            
             tmpArr[2] = null;
             setNumArr(tmpArr);
-            setNumber((tmpArr[0] || 0) * 1000 + (tmpArr[1] || 0) * 100 + (tmpArr[2] || 0) * 10 + (tmpArr[3] || 0));
+            // setNumber((tmpArr[0] || 0) * 1000 + (tmpArr[1] || 0) * 100 + (tmpArr[2] || 0) * 10 + (tmpArr[3] || 0));
         }
     }
     const onClick4 = () => {
         if (numArr[3] !== null) {
-            const tmpArr = numArr;
+            const tmpArr = [...numArr];            
             tmpArr[3] = null;
             setNumArr(tmpArr);
-            setNumber((tmpArr[0] || 0) * 1000 + (tmpArr[1] || 0) * 100 + (tmpArr[2] || 0) * 10 + (tmpArr[3] || 0));
+            // setNumber((tmpArr[0] || 0) * 1000 + (tmpArr[1] || 0) * 100 + (tmpArr[2] || 0) * 10 + (tmpArr[3] || 0));
         }
     }
     function incrementIterations() {
@@ -111,32 +108,25 @@ const GameComponent = (props) => {
     }
 
     function makeGuess() {
-        if ((number + '').length != 4) {
-            setErr('Please input a 4 digit number without repeating digits ' + number);
+        if (numArr.findIndex( item => item === null) > -1) {
+            setErr('Please input a 4 digit number ' + numArr.join(''));
         } else {
-            const str = number + '';
-            let charArr = [...str];
-            charArr = charArr.filter(unique);
-            if (charArr.length < 4) {
-                setErr('Please make sure there are no repeating digits');
-            } else {
-                setErr(null);
-                incrementIterations();
-                let result = '';
-                for (let i = 0; i < 4; i++) {    
-                    const idx = numberToBeGuessed.val.toString().indexOf(number.toString().charAt(i));
-                    if (idx === i) {
-                        result = '+' + result;
-                    } else if (idx > -1) {
-                        result = result + '-';
-                    }
+            setErr(null);
+            incrementIterations();
+            let result = '';
+            for (let i = 0; i < 4; i++) {    
+                const idx = numberToBeGuessed.val.toString().indexOf(numArr[i]);
+                if (idx === i) {
+                    result = '+' + result;
+                } else if (idx > -1) {
+                    result = result + '-';
                 }
-                const newGuess = {guess: number, result};
-                if (result === '++++') {
-                    setSuccess(true);
-                }
-                setGuesses(guesses.val.concat(newGuess));
             }
+            const newGuess = {guess: numArr.join(''), result};
+            if (result === '++++') {
+                setSuccess(true);
+            }
+            setGuesses(guesses.val.concat(newGuess));
         }
     }
 
@@ -166,7 +156,7 @@ const GameComponent = (props) => {
                         <div className={"centerStyle"}>{numArr && numArr[0] !== null ? numArr[0] : ''}</div>
                     </div>
                     <div className={isOver2 ? "toBeSelected" : "inputArea"} ref={dropRef2} onClick={onClick2}>
-                        {numArr &&  numArr[1] !== null && <div className={"centerStyle"}>{numArr[1]}</div>}
+                        <div className={"centerStyle"}>{numArr && numArr[1] !== null ? numArr[1] : ''}</div>
                     </div>
                     <div className={isOver3 ? "toBeSelected" : "inputArea"} ref={dropRef3} onClick={onClick3}>
                         <div className={"centerStyle"}>{numArr && numArr[2] !== null ? numArr[2] : ''}</div>
